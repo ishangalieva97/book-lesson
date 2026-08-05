@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Design & The Profession of an Illustrator | B1 English Lesson</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf8f5;
+            --surface: #ffffff;
+            --text: #2c2416;
+            --text-secondary: #6b5e4a;
+            --accent: #8b5e3c;
+            --accent-light: #f0e6d8;
+            --gold: #c9a96e;
+            --border: #e5ddd1;
+            --shadow: 0 4px 24px rgba(44, 36, 22, 0.06);
+            --shadow-lg: 0 12px 40px rgba(44, 36, 22, 0.10);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(201, 169, 110, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 90%, rgba(139, 94, 60, 0.06) 0%, transparent 60%);
+        }
+
+        .top-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(44, 36, 22, 0.04);
+        }
+        .top-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: -0.01em;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo-icon {
+            font-size: 1.6rem;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--accent-light);
+            border-radius: 40px;
+            padding: 4px;
+        }
+        .nav-tab {
+            padding: 0.55rem 1.3rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+        .nav-tab:hover {
+            color: var(--accent);
+        }
+        .nav-tab.active {
+            background: var(--surface);
+            color: var(--accent);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(44, 36, 22, 0.08);
+        }
+        .level-badge {
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            display: none;
+            animation: fadeSlideIn 0.5s ease;
+        }
+        .section.active {
+            display: block;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero-card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-card .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .hero-card .emoji-decoration {
+            font-size: 3rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3 .section-num {
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover-row {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .book-cover-demo {
+            width: 160px;
+            height: 230px;
+            border-radius: 8px 16px 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 1rem;
+            gap: 0.3rem;
+        }
+        .book-cover-demo:hover {
+            transform: translateY(-6px) rotate(-2deg);
+            box-shadow: 12px 14px 28px rgba(0, 0, 0, 0.25);
+        }
+        .book-minimal {
+            background: linear-gradient(135deg, #4a2c17, #2b1808);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+        }
+        .book-minimal small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.06em;
+            opacity: 0.8;
+        }
+        .book-fantasy {
+            background: linear-gradient(135deg, #1a1a2e, #4a1942, #8b1a1a);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        .book-fantasy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%);
+            background-size: 20px 20px;
+            border-radius: 8px 16px 16px 8px;
+            pointer-events: none;
+        }
+        .book-fantasy small {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .vocab-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .vocab-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+        }
+        .vocab-card .term {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+        .vocab-card .ipa {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+        .vocab-card .definition {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+        .vocab-card .ccq {
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 0.4rem;
+        }
+
+        .reading-text {
+            background: #fdfaf5;
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+        .reading-text .highlight {
+            background: #fef3c7;
+            padding: 0.15rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        .question-block {
+            background: var(--accent-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1rem;
+        }
+        .question-block p {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .gap-exercise {
+            margin: 1.5rem 0;
+        }
+        .gap-sentence {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .gap-sentence .num {
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 24px;
+        }
+        .gap-input {
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            width: 200px;
+            transition: var(--transition);
+            background: #fff;
+        }
+        .gap-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
+        }
+        .gap-input.correct {
+            border-color: #4caf50;
+            background: #f1f8e9;
+        }
+        .gap-input.incorrect {
+            border-color: #e57373;
+            background: #fef2f2;
+        }
+        .check-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            margin-top: 1rem;
+        }
+        .check-btn:hover {
+            background: #6d4528;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 94, 60, 0.3);
+        }
+        .feedback-msg {
+            margin-top: 0.75rem;
+            font-weight: 600;
+            min-height: 24px;
+        }
+
+        .brief-card {
+            background: linear-gradient(135deg, #fffdf7, #fef9ef);
+            border: 2px dashed var(--gold);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+        .brief-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .brief-prompts {
+            list-style: none;
+            padding: 0;
+        }
+        .brief-prompts li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .brief-prompts li:last-child {
+            border-bottom: none;
+        }
+        .brief-prompts .icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .brief-prompts .prompt-text {
+            font-weight: 500;
+        }
+        .example-box {
+            background: #fff;
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .exit-ticket {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .exit-option {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .exit-option:hover {
+            border-color: var(--gold);
+            background: #fefdf9;
+        }
+        .exit-option.selected {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+        .exit-option .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .homework-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .homework-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            transition: var(--transition);
+        }
+        .homework-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-lg);
+        }
+        .homework-card .option-label {
+            background: var(--accent);
+            color: #fff;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 0.75rem 0;
+                gap: 0.75rem;
+            }
+            .nav-tabs {
+                overflow-x: auto;
+                width: 100%;
+                border-radius: 30px;
+            }
+            .nav-tab {
+                padding: 0.45rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            .hero-card {
+                padding: 2rem 1.25rem;
+            }
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+            .book-cover-row {
+                gap: 1rem;
+            }
+            .book-cover-demo {
+                width: 120px;
+                height: 175px;
+            }
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+            .gap-sentence {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .gap-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">
+                <span class="logo-icon">📖</span> BookDesign
+            </div>
+            <div class="nav-tabs" id="navTabs">
+                <button class="nav-tab active" data-section="warmup">1. Warm-up</button>
+                <button class="nav-tab" data-section="vocabulary">2. Vocabulary</button>
+                <button class="nav-tab" data-section="reading">3. Reading</button>
+                <button class="nav-tab" data-section="practice">4. Practice</button>
+                <button class="nav-tab" data-section="speaking">5. Speaking</button>
+                <button class="nav-tab" data-section="cooldown">6. Cool-down</button>
+                <button class="nav-tab" data-section="homework">7. Homework</button>
+            </div>
+            <span class="level-badge">B1 Intermediate</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- SECTION 1: WARM-UP -->
+        <div class="section active" id="section-warmup">
+            <div class="hero-card">
+                <span class="emoji-decoration">🎨📚</span>
+                <h1>Book Design & The Illustrator</h1>
+                <p class="subtitle">Discover the art behind the pages and learn to talk about book design like a pro</p>
+            </div>
+
+            <div class="card">
+                <h3><span class="section-num">1</span> Warming-up: Judge a Book by Its Cover?</h3>
+                <p style="margin-bottom:1.5rem;color:var(--text-secondary);">Look at these two book covers. Think about the questions below, then discuss with a partner or reflect on your own.</p>
+
+                <div class="book-cover-row">
+                    <div class="book-cover-demo book-minimal" title="Minimalist Classic: Jack London">
+                        WHITE<br>FANG<br><small>Jack London</small>
+                    </div>
+                    <div class="book-cover-demo book-fantasy" title="Fantasy: Stephenie Meyer">
+                        BREAKING<br>DAWN<br>🌅<br><small>Stephenie Meyer</small>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <p>🤔 <strong>Discussion Questions:</strong></p>
+                    <p>1. If you had to choose one book based <em>only</em> on the cover, which one would you pick? Why?</p>
+                    <p>2. Do you agree with the saying: <em>"Don't judge a book by its cover"</em>? Why or why not?</p>
+                    <p>3. What is more important to you when choosing a book: the cover, the title, or a friend's recommendation?</p>
+                </div>
+                <p style="margin-top:1rem;color:var(--accent);font-weight:500;">✨ Today we're exploring the people who make books beautiful and the specific parts of a book's design.</p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: VOCABULARY -->
+        <div class="section" id="section-vocabulary">
+            <div class="card">
+                <h3><span class="section-num">2</span> Pre-Teaching Vocabulary: Book Elements & The Illustrator's World</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1rem;">Hover over each card to focus. These are the key terms you'll need for today's lesson.</p>
+                <div class="vocab-grid">
+                    <div class="vocab-card">
+                        <span class="term">Cover</span> <span class="ipa">/ˈkʌvə/</span>
+                        <p class="definition">The front outer part of a book that protects the pages.</p>
+                        <p class="ccq">💡 "Can a cover be hard or soft?" — Yes, it can be either.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Spine</span> <span class="ipa">/spaɪn/</span>
+                        <p class="definition">The narrow side of a book where pages are glued; visible on a shelf.</p>
+                        <p class="ccq">💡 "Do you find the spine on the front or the side?" — On the side.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Dust jacket</span> <span class="ipa">/ˈdʌst ˌdʒækɪt/</span>
+                        <p class="definition">A removable printed paper cover that protects the hardcover.</p>
+                        <p class="ccq">💡 "Is it permanent or removable?" — Removable.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Title page</span> <span class="ipa">/ˈtaɪtl peɪdʒ/</span>
+                        <p class="definition">The first printed page inside with the full title and author's name.</p>
+                        <p class="ccq">💡 "Is this the same as the cover?" — No, it's inside the book.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Front matter</span> <span class="ipa">/frʌnt ˈmætə/</span>
+                        <p class="definition">Pages before the main story: title page, copyright, table of contents.</p>
+                        <p class="ccq">💡 "Do you read the story here?" — No, it's introductory material.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Typography</span> <span class="ipa">/taɪˈpɒɡrəfi/</span>
+                        <p class="definition">The style, arrangement, and appearance of printed text (fonts, spacing).</p>
+                        <p class="ccq">💡 "Can typography make a page feel scary or elegant?" — Absolutely!</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Layout</span> <span class="ipa">/ˈleɪaʊt/</span>
+                        <p class="definition">The way text and images are arranged on a page.</p>
+                        <p class="ccq">💡 "Can a layout be clean or cluttered?" — Yes, both are possible.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Illustrator</span> <span class="ipa">/ˈɪləstreɪtə/</span>
+                        <p class="definition">A person who creates pictures and artwork for books.</p>
+                        <p class="ccq">💡 "Do they write the words or draw the pictures?" — Draw the pictures.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Brief</span> <span class="ipa">/briːf/</span>
+                        <p class="definition">Instructions from a publisher telling the illustrator what to create.</p>
+                        <p class="ccq">💡 "Does the brief give rules or total freedom?" — It gives rules and direction.</p>
+                    </div>
+                    <div class="vocab-card">
+                        <span class="term">Palette</span> <span class="ipa">/ˈpælɪt/</span>
+                        <p class="definition">The range of colours an illustrator chooses for a specific project.</p>
+                        <p class="ccq">💡 "Can a palette be just black and white?" — Yes, or many colours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: READING -->
+        <div class="section" id="section-reading">
+            <div class="card">
+                <h3><span class="section-num">3</span> Reading: A Children's Book Illustrator</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1rem;">Read the text carefully. Vocabulary words are <span class="highlight">highlighted</span>.</p>
+                <div class="reading-text">
+                    <p>I'm Sarah, and I bring stories to life. When I get a new <span class="highlight">brief</span> from a publisher, I first read the manuscript carefully. Then, I start sketching the characters. I have to think about the entire book design, not just the pictures. The <span class="highlight">typography</span> must match my drawing style. I plan the <span class="highlight">layout</span> of each page: where the text goes and where the Goblin hides. I usually choose a warm colour <span class="highlight">palette</span> because the story is cozy, but sometimes the author wants a scary scene on the <span class="highlight">title page</span>! The hardest part is often the <span class="highlight">cover</span>. It needs to look good even as a small thumbnail on a website, and you must remember to leave space for the text on the <span class="highlight">spine</span>. Without a good <span class="highlight">dust jacket</span>, a hardcover book looks naked.</p>
+                </div>
+                <div class="question-block">
+                    <p>📖 <strong>Comprehension Questions (use new vocabulary in your answers):</strong></p>
+                    <p>1. What does Sarah receive before she starts drawing?</p>
+                    <p>2. What does she plan to decide where text and images sit?</p>
+                    <p>3. Why is designing the spine important?</p>
+                    <p>4. What word describes her choice of 'warm colours'?</p>
+                </div>
+                <details style="margin-top:1rem;cursor:pointer;">
+                    <summary style="font-weight:600;color:var(--accent);">📝 Click to reveal sample answers</summary>
+                    <p style="margin-top:0.5rem;color:var(--text-secondary);">1. She receives a <strong>brief</strong>. &nbsp; 2. She plans the <strong>layout</strong>. &nbsp; 3. Because it's visible on the shelf and needs space for text. &nbsp; 4. <strong>Palette</strong>.</p>
+                </details>
+            </div>
+        </div>
+
+        <!-- SECTION 4: PRACTICE -->
+        <div class="section" id="section-practice">
+            <div class="card">
+                <h3><span class="section-num">4</span> Controlled Practice: Fill in the Gaps</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Type the correct word from the list into each blank. Click "Check Answers" when you're done.</p>
+                <p style="margin-bottom:1rem;font-weight:500;">Word bank: <em>spine, cover, illustrator, typography, layout, brief, dust jacket, palette</em></p>
+
+                <div class="gap-exercise" id="gapExercise">
+                    <div class="gap-sentence"><span class="num">1.</span> The <input type="text" class="gap-input" data-answer="cover" placeholder="?"> of this fantasy book is very busy; there are dragons everywhere.</div>
+                    <div class="gap-sentence"><span class="num">2.</span> I love this book. The removable <input type="text" class="gap-input" data-answer="dust jacket" placeholder="?"> has gold letters on it.</div>
+                    <div class="gap-sentence"><span class="num">3.</span> An <input type="text" class="gap-input" data-answer="illustrator" placeholder="?"> must understand the emotions of the story.</div>
+                    <div class="gap-sentence"><span class="num">4.</span> The publisher gave the artist a strict <input type="text" class="gap-input" data-answer="brief" placeholder="?"> : "Draw a black cat."</div>
+                    <div class="gap-sentence"><span class="num">5.</span> Gothic books often use a dark <input type="text" class="gap-input" data-answer="palette" placeholder="?"> with black and purple.</div>
+                    <div class="gap-sentence"><span class="num">6.</span> The <input type="text" class="gap-input" data-answer="typography" placeholder="?"> is boring – just Times New Roman.</div>
+                    <div class="gap-sentence"><span class="num">7.</span> Be careful; the <input type="text" class="gap-input" data-answer="spine" placeholder="?"> is broken, so pages are falling out.</div>
+                    <div class="gap-sentence"><span class="num">8.</span> A good <input type="text" class="gap-input" data-answer="layout" placeholder="?"> guides your eye from picture to text.</div>
+                </div>
+                <button class="check-btn" onclick="checkGaps()">✅ Check Answers</button>
+                <p class="feedback-msg" id="gapFeedback"></p>
+            </div>
+        </div>
+
+        <!-- SECTION 5: SPEAKING -->
+        <div class="section" id="section-speaking">
+            <div class="card">
+                <h3><span class="section-num">5</span> Freer Practice: Mini-Brief for a Designer</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1rem;">You are a writer hiring an illustrator for your new book. Work in groups and prepare a creative brief.</p>
+
+                <div class="brief-card">
+                    <h4>📋 Your Book: <strong>"The Last Robot in the Library"</strong> <span style="font-weight:400;color:var(--text-secondary);">(or invent your own title!)</span></h4>
+                    <ul class="brief-prompts">
+                        <li><span class="icon">🎨</span><span class="prompt-text"><strong>Cover:</strong> What must be on the cover? (Main character? Action scene?)</span></li>
+                        <li><span class="icon">🌈</span><span class="prompt-text"><strong>Colour Palette:</strong> What colours fit the mood? Why?</span></li>
+                        <li><span class="icon">🔤</span><span class="prompt-text"><strong>Typography:</strong> Old-fashioned, futuristic, messy, or elegant?</span></li>
+                        <li><span class="icon">📄</span><span class="prompt-text"><strong>Title Page:</strong> Describe an interesting detail for the layout.</span></li>
+                        <li><span class="icon">📚</span><span class="prompt-text"><strong>Spine:</strong> What information should appear there?</span></li>
+                    </ul>
+                    <div class="example-box">
+                        💬 <strong>Example starter:</strong> <em>"For our cover, we need the main character — a robot — holding a dusty book. The palette should be sepia and dark blue because the library is old and mysterious. The typography should look like old metal stamps..."</em>
+                    </div>
+                </div>
+                <p style="margin-top:1rem;color:var(--accent);font-weight:500;">🎤 Present your brief to the class using as many new words as possible!</p>
+            </div>
+        </div>
+
+        <!-- SECTION 6: COOL-DOWN -->
+        <div class="section" id="section-cooldown">
+            <div class="card">
+                <h3><span class="section-num">6</span> Cool-down & Reflection: Exit Ticket</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Click on the sentence you'd like to finish. Reflect on today's lesson.</p>
+                <div class="exit-ticket">
+                    <div class="exit-option" onclick="selectExit(this, 1)">
+                        <span class="emoji">✍️</span>
+                        <strong>Option A:</strong> "Today I learned that an illustrator must..."
+                    </div>
+                    <div class="exit-option" onclick="selectExit(this, 2)">
+                        <span class="emoji">🧠</span>
+                        <strong>Option B:</strong> "The most difficult word to remember was..."
+                    </div>
+                    <div class="exit-option" onclick="selectExit(this, 3)">
+                        <span class="emoji">🎨</span>
+                        <strong>Option C:</strong> "My favourite book element to design would be the ______ because..."
+                    </div>
+                </div>
+                <p id="exitFeedback" style="margin-top:1rem;font-weight:500;color:var(--accent);"></p>
+            </div>
+        </div>
+
+        <!-- SECTION 7: HOMEWORK -->
+        <div class="section" id="section-homework">
+            <div class="card">
+                <h3><span class="section-num">7</span> Homework Assignment</h3>
+                <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Choose one of the two options below. Bring your work to the next lesson.</p>
+                <div class="homework-options">
+                    <div class="homework-card">
+                        <span class="option-label">OPTION A</span>
+                        <h4 style="font-family:'Playfair Display',serif;color:var(--accent);margin-bottom:0.5rem;">📸 Book Detective</h4>
+                        <p>Find a real book at home, take a photo of it, and label at least <strong>4 elements</strong> (spine, cover, dust jacket, title page, etc.) directly on the image.</p>
+                    </div>
+                    <div class="homework-card">
+                        <span class="option-label">OPTION B</span>
+                        <h4 style="font-family:'Playfair Display',serif;color:var(--accent);margin-bottom:0.5rem;">✍️ Design Review</h4>
+                        <p>Write a short review (50–80 words) of your favourite book cover. Analyze the <strong>illustration</strong>, the <strong>colour palette</strong>, and the <strong>typography</strong>. Would you change the <strong>layout</strong>?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const targetId = 'section-' + tab.dataset.section;
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+                window.scrollTo({ top: 140, behavior: 'smooth' });
+            });
+        });
+
+        function checkGaps() {
+            const inputs = document.querySelectorAll('#gapExercise .gap-input');
+            let correctCount = 0;
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.dataset.answer.toLowerCase();
+                let isCorrect = false;
+                if (correctAnswer === 'dust jacket') {
+                    isCorrect = (userAnswer === 'dust jacket' || userAnswer === 'dustjacket');
+                } else {
+                    isCorrect = (userAnswer === correctAnswer);
+                }
+
+                if (isCorrect) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correctCount++;
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+
+            const feedback = document.getElementById('gapFeedback');
+            if (correctCount === inputs.length) {
+                feedback.textContent = '🎉 Perfect! All 8 answers are correct. Excellent vocabulary work!';
+                feedback.style.color = '#4caf50';
+            } else if (correctCount >= 5) {
+                feedback.textContent = `👍 Good job! You got ${correctCount}/8 correct. Review the red ones and try again.`;
+                feedback.style.color = '#ff9800';
+            } else {
+                feedback.textContent = `📚 Keep going! You got ${correctCount}/8 correct. Check the highlighted words and retry.`;
+                feedback.style.color = '#e57373';
+            }
+        }
+
+        function selectExit(element, optionNum) {
+            document.querySelectorAll('.exit-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            const feedback = document.getElementById('exitFeedback');
+            const messages = {
+                1: '✍️ Great reflection! Think about what an illustrator must consider: the brief, the palette, the layout...',
+                2: '🧠 That\'s okay! The tricky words often become the most useful ones. Keep practising!',
+                3: '🎨 Wonderful! Book design is a fascinating blend of art and function. Your creative eye matters!'
+            };
+            feedback.textContent = messages[optionNum] || '';
+        }
+
+        document.querySelectorAll('.gap-input').forEach(input => {
+            input.addEventListener('input', () => {
+                input.classList.remove('correct', 'incorrect');
+                document.getElementById('gapFeedback').textContent = '';
+            });
+        });
+
+        console.log('📖 Book Design Lesson Site ready!');
+        console.log('🐺 White Fang & 🌅 Breaking Dawn covers loaded.');
+    </script>
+
+</body>
+</html>
